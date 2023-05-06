@@ -61,6 +61,7 @@
   margin-bottom: 20px;
   border-radius: 7px;
   word-wrap: break-word;
+  white-space: pre-line;
   overflow: hidden;
   text-align: justify;
   font-family: Arial, Helvetica, sans-serif;
