@@ -14,7 +14,7 @@ import useAuth from '@/hooks/useAuth'
 const LoginPopUp = (props: propsLoginPopUp) => {
     const [pass, setPass] = useState("");
     const [username, setUsername] = useState("");
-    const auth = useAuth({username: parseInt(username),password: pass})
+    const auth = useAuth({ username: parseInt(username), password: pass })
     const router = useRouter()
 
     const getPass = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,7 @@ const LoginPopUp = (props: propsLoginPopUp) => {
     }
 
     const handleWrongCredentials = () => {
-        return auth ? 1 : alert('Username or Password is wrong, please check your details and try again!');
+        return auth.auth ? 1 : alert('Username or Password is wrong, please check your details and try again!');
     }
 
     const handleKeyboardSubmit = (e: React.KeyboardEvent<HTMLDivElement> | React.KeyboardEvent<HTMLButtonElement>) => {
@@ -38,8 +38,9 @@ const LoginPopUp = (props: propsLoginPopUp) => {
     
 
     useEffect(() => {
-        localStorage.setItem('username', username.toString());
-    }, [ username])
+        window.localStorage.setItem('username', username.toString());
+        window.localStorage.setItem('usertype', auth.isAdmin.toString());
+    }, [ username,auth])
 
     return (
         <>

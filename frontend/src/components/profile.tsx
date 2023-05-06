@@ -7,6 +7,7 @@ import Button from './Button'
 
 const Profile = (props) => {
     const [username, setUsername] = useState("")
+    const [isAdmin,setIsAdmin] = useState(false)
 
     const handlePfpUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -20,7 +21,10 @@ const Profile = (props) => {
             window.localStorage.setItem('pfp', props.pfp)
 
         }
-        window.localStorage.setItem('username',props.userID)
+        window.localStorage.setItem('username', props.userID)
+        const usertype = window.localStorage.getItem('usertype');
+        if (usertype === 'true')
+            setIsAdmin(true);
         setUsername(props.userID);
     }, [props.pfp, setUsername,props.userID])
 
@@ -45,7 +49,7 @@ const Profile = (props) => {
 
                 {props.posts &&
                     <div className='my-7 flex flex-row'>
-                        <Button className='h-[22px]'><a href={`${process.env.NEXT_PUBLIC_MANAGE_DB}`} target="_blank" rel="noopener noreferrer" className='whitespace-nowrap no-underline text-black font-bold'>Manage DB</a></Button>
+                        {isAdmin && <Button className='h-[22px]'><a href={`${process.env.NEXT_PUBLIC_MANAGE_DB}`} target="_blank" rel="noopener noreferrer" className='whitespace-nowrap no-underline text-black font-bold'>Manage DB</a></Button>}
                         <Button className='h-[20px] w-[7rem] font-bold whitespace-nowrap mx-[10px] '>
                             <Link underline='none' color={'black'} href='/' >Log out</Link>
                         </Button>

@@ -14,8 +14,6 @@ export const useFetchUser = (id: number, pass: string) => {
       });
       const data = response.data;
       setUserFound(true)
-      console.log(data);
-      return data;
     } catch (err) {
       setUserFound(false);
       console.error(err);

@@ -8,7 +8,6 @@ export const useCreatePost = () => {
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/post`,post)
             const data = response.data;
-            console.log(data);
         } catch (err) {
             console.error(err);
         }
