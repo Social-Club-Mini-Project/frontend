@@ -1,0 +1,11 @@
+{
+  "name": "prisma",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "reiyuchan",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "prisma": "^4.13.0"
+  }
+}

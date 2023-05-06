@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model department {
+  dep_id   Int     @id(map: "PK__departme__BB4BD8F84181564A")
+  dep_name String  @unique(map: "UQ__departme__7BE549507170DE75") @db.VarChar(15)
+  users    users[]
+}
+
+model post {
+  post_id   Int      @id(map: "PK__post__3ED78766A5772A10") @default(autoincrement())
+  user_id   Int
+  post_date DateTime @default(now(), map: "DF__post__post_date__1BC821DD") @db.Date
+  text      String?  @db.VarChar(Max)
+  img       Bytes?   @db.Image
+  likes     Int      @default(0, map: "DF__post__likes__1CBC4616")
+  users     users    @relation(fields: [user_id], references: [user_id], onUpdate: NoAction, map: "FK__post__user_id__1AD3FDA4")
+}
+
+model staff {
+  user_id Int    @id(map: "PK__staff__B9BE370F473D00DE")
+  courses String @unique(map: "UQ__staff__4ECEDAC6536214A4") @db.VarChar(15)
+  users   users  @relation(fields: [user_id], references: [user_id], onUpdate: NoAction, map: "FK__staff__user_id__208CD6FA")
+}
+
+model stats {
+  Status_id  Int    @id(map: "PK__stats__51910524B3F5425C")
+  Status_val String @unique(map: "UQ__stats__11D8F6547023F797") @db.VarChar(15)
+}
+
+model users {
+  user_id       Int        @id(map: "PK__users__B9BE370F9700106B")
+  email         String     @unique(map: "UQ__users__AB6E61640CAA8E9A") @db.VarChar(30)
+  password      String     @db.VarChar(30)
+  name          String     @db.VarChar(20)
+  birth_date    DateTime   @db.Date
+  phone         String     @db.VarChar(11)
+  address       String     @db.VarChar(30)
+  Level         Int
+  user_role     String     @db.VarChar(9)
+  Profile_photo Bytes?     @db.Image
+  gender        String     @db.Char(6)
+  dep_id        Int
+  post          post[]
+  staff         staff?
+  department    department @relation(fields: [dep_id], references: [dep_id], onUpdate: NoAction, map: "FK__users__dep_id__1332DBDC")
+}

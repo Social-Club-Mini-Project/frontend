@@ -1,0 +1,21 @@
+.label {
+    color: white;
+    /* padding-right: 50px; */
+    font-size: 18px;
+    margin-right: 50px;
+    text-align: left;
+    user-select: none;
+}
+
+.labelMail {
+    margin-right: 48px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:active {
+    color: mediumaquamarine;
+}
