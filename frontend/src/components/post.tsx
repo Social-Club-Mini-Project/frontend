@@ -28,12 +28,6 @@ export const Post = (props) => {
     }
     
     useEffect(() => {
-        console.log(post)
-        // createPost({text: post.text, userID: post.username, likes: post.likes})
-        // const postData = fetchPosts()
-        // setLikes(postData.likes)
-        
-        
         // if (likes > 0) {
         //     window.localStorage.setItem('likes', likes.toString());
 
