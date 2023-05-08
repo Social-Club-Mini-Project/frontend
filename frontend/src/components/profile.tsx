@@ -7,7 +7,7 @@ import Button from './Button'
 
 const Profile = (props) => {
     const [username, setUsername] = useState("")
-    const [isAdmin,setIsAdmin] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
 
     const handlePfpUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -21,12 +21,11 @@ const Profile = (props) => {
             window.localStorage.setItem('pfp', props.pfp)
 
         }
-        window.localStorage.setItem('username', props.userID)
         const usertype = window.localStorage.getItem('usertype');
         if (usertype === 'true')
             setIsAdmin(true);
         setUsername(props.userID);
-    }, [props.pfp, setUsername,props.userID])
+    }, [props.pfp, setUsername, props.userID])
 
     return (
         <>

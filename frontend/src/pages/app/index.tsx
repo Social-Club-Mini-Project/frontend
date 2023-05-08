@@ -61,7 +61,7 @@ const Home = () => {
     setPfp(pfpStorage);
     if (auth === 'false' || !storedUsername)
       router.push('/');
-  }, [setPfp, setAuth, setUsername, router, auth, postsData])
+  }, [setPfp, setAuth, setUsername,setPosts, router, auth, postsData])
 
   if (auth === 'true')
     return (

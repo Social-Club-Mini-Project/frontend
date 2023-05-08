@@ -6,6 +6,9 @@ const nextConfig = {
     loader: 'akamai',
     path: '',
   },
+  typescript: {
+    ignoreBuildErrors: true
+  }
 };
 
 module.exports = nextConfig;

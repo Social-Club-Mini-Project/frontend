@@ -8,35 +8,45 @@ datasource db {
 }
 
 model department {
-  dep_id   Int     @id(map: "PK__departme__BB4BD8F84181564A")
-  dep_name String  @unique(map: "UQ__departme__7BE549507170DE75") @db.VarChar(15)
+  dep_id   Int     @id(map: "PK__departme__BB4BD8F8061947E4")
+  dep_name String  @unique(map: "UQ__departme__7BE5495002E83377") @db.VarChar(15)
   users    users[]
 }
 
 model post {
-  post_id   Int      @id(map: "PK__post__3ED78766A5772A10") @default(autoincrement())
-  user_id   Int
-  post_date DateTime @default(now(), map: "DF__post__post_date__1BC821DD") @db.Date
+  post_id   Int      @id(map: "PK__post__3ED78766D2A4ACAC") @default(autoincrement())
+  userID    Int
+  post_date DateTime @default(now(), map: "DF__post__post_date__3F115E1A") @db.Date
   text      String?  @db.VarChar(Max)
   img       Bytes?   @db.Image
-  likes     Int      @default(0, map: "DF__post__likes__1CBC4616")
-  users     users    @relation(fields: [user_id], references: [user_id], onUpdate: NoAction, map: "FK__post__user_id__1AD3FDA4")
+  likes     Int      @default(0, map: "DF__post__likes__40058253")
+  users     users    @relation(fields: [userID], references: [userID], onUpdate: NoAction, map: "FK__post__userID__3E1D39E1")
 }
 
 model staff {
-  user_id Int    @id(map: "PK__staff__B9BE370F473D00DE")
-  courses String @unique(map: "UQ__staff__4ECEDAC6536214A4") @db.VarChar(15)
-  users   users  @relation(fields: [user_id], references: [user_id], onUpdate: NoAction, map: "FK__staff__user_id__208CD6FA")
+  userID  Int    @id(map: "PK__staff__CB9A1CDF4C9FCE68")
+  courses String @unique(map: "UQ__staff__4ECEDAC6DC30A062") @db.VarChar(15)
+  users   users  @relation(fields: [userID], references: [userID], onUpdate: NoAction, map: "FK__staff__userID__43D61337")
 }
 
 model stats {
-  Status_id  Int    @id(map: "PK__stats__51910524B3F5425C")
-  Status_val String @unique(map: "UQ__stats__11D8F6547023F797") @db.VarChar(15)
+  Status_id  Int    @id(map: "PK__stats__51910524B34654F0")
+  Status_val String @unique(map: "UQ__stats__11D8F6547AEF9355") @db.VarChar(15)
+}
+
+model sysdiagrams {
+  name         String @db.NVarChar(128)
+  principal_id Int
+  diagram_id   Int    @id(map: "PK__sysdiagr__C2B05B6147B0DD71") @default(autoincrement())
+  version      Int?
+  definition   Bytes?
+
+  @@unique([principal_id, name], map: "UK_principal_name")
 }
 
 model users {
-  user_id       Int        @id(map: "PK__users__B9BE370F9700106B")
-  email         String     @unique(map: "UQ__users__AB6E61640CAA8E9A") @db.VarChar(30)
+  userID        Int        @id(map: "PK__users__CB9A1CDFC12DE856")
+  email         String     @unique(map: "UQ__users__AB6E61640711534C") @db.VarChar(30)
   password      String     @db.VarChar(30)
   name          String     @db.VarChar(20)
   birth_date    DateTime   @db.Date
@@ -49,5 +59,5 @@ model users {
   dep_id        Int
   post          post[]
   staff         staff?
-  department    department @relation(fields: [dep_id], references: [dep_id], onUpdate: NoAction, map: "FK__users__dep_id__1332DBDC")
+  department    department @relation(fields: [dep_id], references: [dep_id], onUpdate: NoAction, map: "FK__users__dep_id__2FCF1A8A")
 }
