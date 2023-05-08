@@ -15,7 +15,7 @@ const PostsSection = (props) => {
         <>
             <Box sx={props.buttonPopUp && { filter: 'blur(2px)' }}>
                 <Button className='p-4 m-32 text-md font-bold whitespace-nowrap' onClick={openPopUp}>New Post</Button>
-                {props.posts && props.posts.map((post, index) => (<Post key={index} {...post} pfp={props.pfp} handleDeletePost={props.handleDeletePost} handleUpdateLikes={props.handleUpdateLikes} />))}
+                {props.posts && props.posts.map((post, index) => (<Post key={index} {...post} pfp={props.pfp} handleDeletePost={props.handleDeletePost} handleUpdateLikes={props.handleUpdateLikes} username={props.userID} />))}
             </Box>
         </>
     )

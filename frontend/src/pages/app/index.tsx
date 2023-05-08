@@ -86,6 +86,7 @@ const Home = () => {
           pfp={pfp}
           setPfp={setPfp}
           handleDeletePost={handleDeletePost}
+          userID={username}
           // handleUpdateLikes={handleUpdateLikes}
         />
         <PostPopUp
