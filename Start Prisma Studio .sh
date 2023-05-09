@@ -2,4 +2,4 @@ echo starting prisma studio..
 
 cd prisma
 
-yarn prisma studio
+yarn prisma studio --browser=none

@@ -30,7 +30,7 @@ const useAuth = ({ username, password }: UserCredentials) => {
         authUser();
         const storedUsername = window.localStorage.getItem('username');
         setUsernameStr(storedUsername!)
-    }, [authUser, auth, usernameStr])
+    }, [authUser, auth,setUsernameStr])
 
     return { auth, isAdmin };
 }

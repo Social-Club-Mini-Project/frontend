@@ -4,4 +4,4 @@ echo starting prisma studio..
 
 cd prisma
 
-call yarn prisma studio
+call yarn prisma studio --browser=none
