@@ -13,9 +13,5 @@ export const useCreatePost = () => {
         }
     }
 
-    // useEffect(() => {
-    //     createPost(post);
-    // },[post])
-
     return createPost;
 }

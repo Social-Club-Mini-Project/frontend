@@ -14,8 +14,6 @@ export const Post = (props) => {
 
     const post = props;
 
-    
-
     const handleLike = () => {
 
         if (!liked) {
@@ -44,7 +42,7 @@ export const Post = (props) => {
         <>
             <Box className='post-container m-auto flex flex-col' sx={{ width: '50%', minWidth: '30rem' }}>
                 <div className='text-right h-0'>
-                    {post.userID === post.username || admin && <button className='rounded-full w-7 h-7 bg-red-600' onClick={() => post.handleDeletePost(post.postID)}>X</button>}
+                    {(post.userID === parseInt(post.username) || admin) && <button className='rounded-full w-7 h-7 bg-red-600' onClick={() => post.handleDeletePost(post.postID)}>X</button>}
                 </div>
                 <Profile {...props} />
                 <span className='post'>{post.text}</span>

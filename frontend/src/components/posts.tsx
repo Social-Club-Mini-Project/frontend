@@ -3,6 +3,7 @@ import { Inter } from '@next/font/google'
 import Box from '@mui/material/Box'
 import Button from './Button'
 import { Post } from './post'
+import { SearchBar } from './SearchBar'
 
 const PostsSection = (props) => {
 
@@ -14,7 +15,10 @@ const PostsSection = (props) => {
     return (
         <>
             <Box sx={props.buttonPopUp && { filter: 'blur(2px)' }}>
+                <div className='flex flex-row sm:m-0 -mx-20'>
                 <Button className='p-4 m-32 text-md font-bold whitespace-nowrap' onClick={openPopUp}>New Post</Button>
+                <SearchBar {...props} />
+                </div>
                 {props.posts && props.posts.map((post, index) => (<Post key={index} {...post} pfp={props.pfp} handleDeletePost={props.handleDeletePost} handleUpdateLikes={props.handleUpdateLikes} username={props.userID} />))}
             </Box>
         </>

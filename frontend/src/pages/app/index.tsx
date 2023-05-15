@@ -8,6 +8,7 @@ import { useRouter } from 'next/Navigation'
 import { useFetchPosts } from '@/hooks/useFetchPosts'
 import { useCreatePost } from '@/hooks/useCreatePost'
 import useDeletePost from '@/hooks/useDeletePost'
+import { useSearchPost } from '@/hooks/useSearchPost'
 
 const Home = () => {
 
@@ -20,6 +21,7 @@ const Home = () => {
   const postsData = useFetchPosts();
   const handleCreatePost = useCreatePost();
   const deletePostFromApi = useDeletePost();
+  const searchPost = useSearchPost();
 
   const handleAddPost = (text: string, imgPath: string, imgName: string) => {
     const newPost = {
@@ -51,7 +53,10 @@ const Home = () => {
   // }
 
   useEffect(() => {
-    setPosts(postsData)
+    if (!searchPost.isSearching)
+      setPosts(postsData)
+    else
+      setPosts(searchPost.post)
 
     const pfpStorage = window.localStorage.getItem('pfp');
     const userAuth = window.localStorage.getItem('auth');
@@ -61,7 +66,7 @@ const Home = () => {
     setPfp(pfpStorage);
     if (auth === 'false' || !storedUsername)
       router.push('/');
-  }, [setPfp, setAuth, setUsername,setPosts, router, auth, postsData])
+  }, [setPfp, setAuth, setUsername, setPosts, router, auth, postsData,searchPost.post,searchPost.isSearching])
 
   if (auth === 'true')
     return (
@@ -87,7 +92,8 @@ const Home = () => {
           setPfp={setPfp}
           handleDeletePost={handleDeletePost}
           userID={username}
-          // handleUpdateLikes={handleUpdateLikes}
+          searchPost={searchPost}
+        // handleUpdateLikes={handleUpdateLikes}
         />
         <PostPopUp
           buttonPopUp={buttonPopUp}
