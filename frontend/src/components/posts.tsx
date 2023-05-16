@@ -4,8 +4,9 @@ import Box from '@mui/material/Box'
 import Button from './Button'
 import { Post } from './post'
 import { SearchBar } from './SearchBar'
+import {  propsPosts } from '@/types/props'
 
-const PostsSection = (props) => {
+const PostsSection = (props: propsPosts) => {
 
     const openPopUp = () => {
         if (!props.buttonPopUp)
@@ -16,10 +17,10 @@ const PostsSection = (props) => {
         <>
             <Box sx={props.buttonPopUp && { filter: 'blur(2px)' }}>
                 <div className='flex flex-row sm:m-0 -mx-20'>
-                <Button className='p-4 m-32 text-md font-bold whitespace-nowrap' onClick={openPopUp}>New Post</Button>
-                <SearchBar {...props} />
+                    <Button className='p-4 m-32 text-md font-bold whitespace-nowrap' onClick={openPopUp}>New Post</Button>
+                    <SearchBar {...props} />
                 </div>
-                {props.posts && props.posts.map((post, index) => (<Post key={index} {...post} pfp={props.pfp} handleDeletePost={props.handleDeletePost} handleUpdateLikes={props.handleUpdateLikes} username={props.userID} />))}
+                {props.posts && props.posts.map((post: any, index) => (<Post key={index} {...post} pfp={props.pfp} handleDeletePost={props.handleDeletePost} username={props.userID} />))}
             </Box>
         </>
     )

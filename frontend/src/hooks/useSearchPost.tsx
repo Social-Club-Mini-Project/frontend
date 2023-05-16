@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export const useSearchPost = () => {
-    const [post, setPost] = useState([]);
+    const [post, setPost] = useState<{}[]>([]);
     const [isSearching, setIsSearching] = useState(false);
 
     const searchForPost = async (userID: number) => {

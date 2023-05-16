@@ -43,7 +43,7 @@ const Home = () => {
     deletePostFromApi(id);
   }
 
-  // const handleUpdateLikes = (id: string, likes: number) => {
+  // const handleUpdateLikes = (id: number, likes: number) => {
   //   const updatedPost = posts.map(post => {
   //     if (post.id === id)
   //       return { ...post, likes: likes };

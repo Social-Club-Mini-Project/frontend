@@ -4,8 +4,9 @@ import Box from '@mui/material/Box'
 import Profile from './profile'
 import Image from 'next/image'
 import useAdmin from '@/hooks/useAdmin'
+import { propsPost } from '@/types/props'
 
-export const Post = (props) => {
+export const Post = (props: propsPost) => {
 
     const [liked, setLiked] = useState(false);
     const [btnTxt, setBtnTxt] = useState("Like");
@@ -16,19 +17,19 @@ export const Post = (props) => {
 
     const handleLike = () => {
 
-        if (!liked) {
-            setLikes(post.likes + 1);
-            setLiked(!liked);
-            setBtnTxt("Unlike");
-        }
-        if (liked) {
-            setLikes(post.likes - 1);
-            setLiked(!liked);
-            setBtnTxt("Like");
-        }
+            if (!liked) {
+                setLikes(post.likes + 1);
+                setLiked(!liked);
+                setBtnTxt("Unlike");
+            }
+            if (liked) {
+                setLikes(post.likes - 1);
+                setLiked(!liked);
+                setBtnTxt("Like");
+            }
         // post.handleUpdateLikes(post.id, likes);
     }
-    
+
     useEffect(() => {
         // if (likes > 0) {
         //     window.localStorage.setItem('likes', likes.toString());
@@ -42,7 +43,7 @@ export const Post = (props) => {
         <>
             <Box className='post-container m-auto flex flex-col' sx={{ width: '50%', minWidth: '30rem' }}>
                 <div className='text-right h-0'>
-                    {(post.userID === parseInt(post.username) || admin) && <button className='rounded-full w-7 h-7 bg-red-600' onClick={() => post.handleDeletePost(post.postID)}>X</button>}
+                    {(parseInt(post.userID) === parseInt(post.username) || admin) && <button className='rounded-full w-7 h-7 bg-red-600' onClick={() => post.handleDeletePost(post.postID)}>X</button>}
                 </div>
                 <Profile {...props} />
                 <span className='post'>{post.text}</span>
