@@ -6,12 +6,12 @@ import TextField from '@mui/material/TextField'
 import Link from 'next/link'
 import Button from './Button'
 import Dialog from '@mui/material/Dialog'
-import { propsLoginPopUp } from '@/types/props'
+import { LoginPopUpProps } from '@/types/props'
 import styles from '@/styles/Login.module.css'
 import { useRouter } from 'next/Navigation'
 import useAuth from '@/hooks/useAuth'
 
-const LoginPopUp = (props: propsLoginPopUp) => {
+const LoginPopUp = (props: LoginPopUpProps) => {
     const [pass, setPass] = useState("");
     const [username, setUsername] = useState("");
     const auth = useAuth({ username: parseInt(username), password: pass })

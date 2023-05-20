@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Button from './Button';
+import { PostsProps } from '@/types/props';
 
-export const SearchBar = (props) => {
+export const SearchBar = (props: PostsProps) => {
     const [searchVal, setSearchVal] = useState("")
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

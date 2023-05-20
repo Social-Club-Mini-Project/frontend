@@ -4,9 +4,9 @@ import Box from '@mui/material/Box'
 import Button from './Button'
 import { Post } from './post'
 import { SearchBar } from './SearchBar'
-import {  propsPosts } from '@/types/props'
+import { PostsProps } from '@/types/props'
 
-const PostsSection = (props: propsPosts) => {
+const PostsSection = (props: PostsProps) => {
 
     const openPopUp = () => {
         if (!props.buttonPopUp)

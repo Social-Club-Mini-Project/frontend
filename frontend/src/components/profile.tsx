@@ -4,9 +4,9 @@ import { Avatar } from '@mui/material'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import Button from './Button'
-import { propsProfile } from '@/types/props'
+import { ProfileProps } from '@/types/props'
 
-const Profile = (props: propsProfile) => {
+const Profile = (props: ProfileProps) => {
     const [username, setUsername] = useState("")
     const [isAdmin, setIsAdmin] = useState(false)
 

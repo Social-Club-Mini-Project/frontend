@@ -4,9 +4,9 @@ import Box from '@mui/material/Box'
 import Profile from './profile'
 import Image from 'next/image'
 import useAdmin from '@/hooks/useAdmin'
-import { propsPost } from '@/types/props'
+import { PostProps } from '@/types/props'
 
-export const Post = (props: propsPost) => {
+export const Post = (props: PostProps) => {
 
     const [liked, setLiked] = useState(false);
     const [btnTxt, setBtnTxt] = useState("Like");
