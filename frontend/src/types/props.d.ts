@@ -27,7 +27,6 @@ interface PostsProps {
     searchForPost: (userID: number) => Promise<void>;
     isSearching: boolean;
   };
-  likes?: number;
 }
 
 interface PostProps {
