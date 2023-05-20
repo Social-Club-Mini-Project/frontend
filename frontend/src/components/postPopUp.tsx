@@ -3,10 +3,10 @@ import { Inter } from '@next/font/google'
 import TextField from '@mui/material/TextField'
 import Button from './Button'
 import Dialog from '@mui/material/Dialog'
-import { propsPostPopUp } from '@/types/props'
+import { PostPopUpProps } from '@/types/props'
 import Image from 'next/image'
 
-const PostPopUp = (props: propsPostPopUp) => {
+const PostPopUp = (props: PostPopUpProps) => {
 
     const [currTxt, setCurrTxt] = useState("");
     const [clicked, setClicked] = useState(false);
@@ -31,6 +31,11 @@ const PostPopUp = (props: propsPostPopUp) => {
             e.preventDefault();
             onCreate();
         }
+    }
+
+    const handleKeyboardCancel = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Escape')
+            closePopUp();
     }
 
     const handleImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +74,7 @@ const PostPopUp = (props: propsPostPopUp) => {
 
     return (
         <>
-            <Dialog open={props.buttonPopUp} onAnimationEnd={handleFocus} >
+            <Dialog open={props.buttonPopUp} onAnimationEnd={handleFocus} onKeyDown={handleKeyboardCancel} >
                 <div className='w-52 min-[300px]:w-72 sm: post-popup-lg post-popup-xlg p-3 overflow-x-hidden' style={{ background: '#1B1A1A' }}>
                     <div className='w-52 min-[300px]:w-72 sm:w-full md:w-full '>
                         <Button className='p-4 min-[300px]:mx-[15.1rem] sm:mx-[30rem] md:mx-[90%] mx-[10rem] font-bold ' onClick={closePopUp}>X</Button>
