@@ -14,8 +14,10 @@ const PostPopUp = (props: PostPopUpProps) => {
     const [img, setImg] = useState({ name: '', url: '' });
 
     const closePopUp = () => {
-        if (props.buttonPopUp)
+        if (props.buttonPopUp) {
             props.setButtonPopUp(!props.buttonPopUp)
+            setCurrTxt("");
+        }
 
         if (clicked)
             setClicked(!clicked);
@@ -64,7 +66,7 @@ const PostPopUp = (props: PostPopUpProps) => {
         props.handleAddPost(currTxt, img.url, img.name);
         setCurrTxt("");
         setImg({ name: '', url: '' });
-        props.setButtonPopUp(!props.buttonPopUp);
+        closePopUp();
     }
 
     const handleFocus = () => {
